@@ -25,7 +25,7 @@ export default class Savings extends Component {
             <div style={styles.Savings}>Pickup savings</div>
           </OverlayTrigger>
         </Col>
-        <Col style={styles.totalSavings} md={6}>{`$${this.props.price}`}</Col>
+        <Col style={styles.totalSavings} md={6}>{`£${this.props.price}`}</Col>
       </Row>
     );
   }

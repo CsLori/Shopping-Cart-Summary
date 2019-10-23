@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
-import SubTotal from './SubTotal/SubTotal';
-import Savings from './Savings/Savings';
-import Taxfees from './Taxfees/Taxfees';
-import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
-import ItemDetails from './ItemDetails/ItemDetails';
-import PromoCode from './PromoCode/PromoCode';
+import SubTotal from './Components/SubTotal/SubTotal';
+import Savings from './Components/Savings/Savings';
+import Taxfees from './Components/Taxfees/Taxfees';
+import EstimatedTotal from './Components/EstimatedTotal/EstimatedTotal';
+import ItemDetails from './Components/ItemDetails/ItemDetails';
+import PromoCode from './Components/PromoCode/PromoCode';
+import { connect } from 'react-redux';
+import { handleChange } from './actions/promoCodeActions';
 
 class App extends Component {
   state = {
@@ -20,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     this.setState(
       {
-        tax: (this.state.total + this.state.savings) * 0.8
+        tax: (this.state.total + this.state.savings) * 0.2
       },
       function() {
         this.setState({
@@ -31,9 +33,18 @@ class App extends Component {
   }
 
   giveDiscountHandler = () => {
-    this.setState({
-      estTotal: this.state.estTotal * 0.9
-    });
+    if (this.props.promoCode === 'DISCOUNT') {
+      this.setState(
+        {
+          estTotal: this.state.estTotal * 0.9
+        },
+        function() {
+          this.setState({
+            disabledPromoButton: true
+          });
+        }
+      );
+    }
   };
   render() {
     return (
@@ -55,4 +66,11 @@ class App extends Component {
     );
   }
 }
-export default App;
+const mapStateToProps = state => ({
+  promoCode: state.promoCode.value
+});
+
+export default connect(
+  mapStateToProps,
+  { handleChange }
+)(App);

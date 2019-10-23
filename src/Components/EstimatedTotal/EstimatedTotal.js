@@ -9,7 +9,7 @@ export default class EstimatedTotal extends Component {
           <h2>Est.Total</h2>
         </Col>
         <Col md={6}>
-          <h2>{`$${this.props.total}`}</h2>
+          <h2>{`£${this.props.total}`}</h2>
         </Col>
       </Row>
     );

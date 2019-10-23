@@ -17,8 +17,8 @@ export default class ItemDetails extends Component {
         <Collapse in={this.state.open}>
           <Media>
             <img
-              width={40}
-              //   height={80}
+              width={80}
+                height={80}
               className="mr-3"
               src="https://cdn.aldi-digital.co.uk//Actifry-A.jpg?o=%24UOh4UWb4DoRlcB%401NTYwd992DUj&V=W3OC&w=1500&p=2&q=50"
               alt="thumbnail"
@@ -31,9 +31,9 @@ export default class ItemDetails extends Component {
               </p>
               <Row className="show-grid">
                 <Col md={6}>
-                  <strong>{`$${this.props.price}`}</strong>
+                  <strong>{`£${this.props.price}`}</strong>
                   <br />
-                  <strong className="price-strike">{`$${this.props.price}`}</strong>
+                  <strong className="price-strike">{`£${this.props.price}`}</strong>
                 </Col>
                 <Col md={6}>Qty: 1</Col>
               </Row>

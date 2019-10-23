@@ -6,7 +6,7 @@ export default class Taxfees extends Component {
     return (
       <Row className="show-grid">
         <Col md={6}>Est. taxes and fees</Col>
-        <Col md={6}>{`$${this.props.taxes}`}</Col>
+        <Col md={6}>{`£${this.props.tax}`}</Col>
       </Row>
     );
   }
